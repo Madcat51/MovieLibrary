@@ -12,7 +12,7 @@
         android:title="@string/title_favorites" />
 
     <item
-        android:id="@+id/navigation_raitng"
+        android:id="@+id/navigation_raiting"
         android:icon="@drawable/ic_baseline_star_rate_24"
         android:title="@string/title_ratings" />
 
