@@ -12,9 +12,9 @@ import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    private var movieActivityPresenter=MovieActivityPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView=binding.navView
         val navController=findNavController(R.id.fragment_container)
         navView.setupWithNavController(navController)
+        movieActivityPresenter.Attach(this)
 
+
+        movieActivityPresenter.fillRepository()//(заполняем, временно)
     }
 }
