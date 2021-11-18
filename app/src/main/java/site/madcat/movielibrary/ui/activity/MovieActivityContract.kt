@@ -1,13 +1,11 @@
 package site.madcat.movielibrary.ui.activity
 
- class MovieActivityContract {
+class MovieActivityContract {
 
-   interface MovieActivityInterface{
+    interface MovieActivityInterface {
 
-       fun Attach(view: MovieActivity)
-       fun Detach()
- fun fillRepository()
-
-
-   }
+        fun onAttach(view: MovieActivity)
+        fun onDetach()
+        fun fillRepository()
+    }
 }
