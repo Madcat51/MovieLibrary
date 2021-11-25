@@ -25,7 +25,7 @@ class MovieRepository : MovieInterface {
 
     override fun deleteMovie(id: Int): Boolean {
         for (i in cash.indices) {
-            if (cash[i].getId(id.toString()).equals(id)) {
+            if (cash[i].id.equals(id)) {
                 cash.removeAt(i)
                 return true
             }

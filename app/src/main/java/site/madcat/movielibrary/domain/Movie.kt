@@ -4,10 +4,11 @@ import java.io.Serializable
 
 
 class Movie
-    (id: String, title: String, released: String, ratingFilms: Long, countViews: Int) :
+    (id: String, title: String,detail:String, released: String, ratingFilms: Long, countViews: Int) :
     Serializable {
 
     var id: String
+    var detail: String
     var title: String
     var released: String
     var ratingFilms: Long
@@ -17,13 +18,14 @@ class Movie
         this.id=id
     }
 
-    fun getId(id: String): String {
-        return id
-    }
+    /*  fun getId(): String {
+          return id
+      }*/
 
     init {
         this.id=id
         this.title=title
+        this.detail=detail
         this.released=released
         this.ratingFilms=ratingFilms
         this.countViews=countViews

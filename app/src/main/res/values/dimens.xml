@@ -7,4 +7,7 @@
     <dimen name="font_size_movie_name">20sp</dimen>
     <dimen name="font_size_movie_released">14sp</dimen>
     <dimen name="font_size_rating">16sp</dimen>
+    <dimen name="font_size_detail_title">24sp</dimen>
+    <dimen name="font_size_detail">20sp</dimen>
+    <dimen name="font_size_detail_rating">24sp</dimen>
 </resources>
