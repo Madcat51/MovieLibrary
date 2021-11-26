@@ -52,8 +52,8 @@ class DetailMovieFragment : Fragment() {
         var m: Movie?=movie
         titleTextView.text=movie?.title
         detailTextView.text=movie?.detail
-        yearTextView.text=movie?.released
-        ratingTextView.text=movie?.ratingFilms.toString()
+        yearTextView.text="Релиз "+movie?.released
+        ratingTextView.text="Рейтинг "+movie?.ratingFilms.toString()
     }
 
     override fun onCreateView(
