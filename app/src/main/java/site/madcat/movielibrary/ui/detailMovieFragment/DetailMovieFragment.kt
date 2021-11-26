@@ -49,7 +49,6 @@ class DetailMovieFragment : Fragment() {
     }
 
     private fun getMovieDetail(movie: Movie?) {
-        var m: Movie?=movie
         titleTextView.text=movie?.title
         detailTextView.text=movie?.detail
         yearTextView.text="Релиз "+movie?.released
