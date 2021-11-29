@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
@@ -56,14 +57,14 @@ class HomeFragment : Fragment()  {
     }
 
     private fun initView() {
-        recyclerView=binding.homeFragmentRecyclerView
+        recyclerView=binding.homeFragmentGenre1RecyclerView
         recyclerView.setLayoutManager(GridLayoutManager(context, 3))
         adapter.setData(homeFragmentPresenter.repository.movie)
+
         recyclerView.setAdapter(adapter)
         adapter!!.setOnItemClickListener(object : HomeAdapter.IItemClickListener {
             override fun onItemClickListener(movie: Movie) {
                 controller?.loadMovie(movie)
-                 // homeFragmentPresenter.onMovieClick(movie!!)
             }
         })
     }
