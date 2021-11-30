@@ -12,7 +12,6 @@ import site.madcat.movielibrary.databinding.ActivityMainBinding
 import site.madcat.movielibrary.domain.Movie
 import site.madcat.movielibrary.ui.detailMovieFragment.DetailMovieFragment
 import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
-import site.madcat.movielibrary.ui.home.HomeAdapter
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
 
@@ -34,9 +33,15 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     }
 
     fun getScreenOrientation(): Boolean {
-        return if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) true
-        else if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) false
-        else true
+        when (resources.configuration.orientation) {
+            Configuration.ORIENTATION_PORTRAIT -> {
+                return true
+            }
+            Configuration.ORIENTATION_LANDSCAPE -> {
+                return false
+            }
+            else -> return true
+        }
     }
 
     fun initNavigation() {
@@ -64,9 +69,10 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     }
 
     fun setDetailMovieFragment(movie: Movie?) {
-         var   detailMovieFragment=DetailMovieFragment()
+        var detailMovieFragment=DetailMovieFragment()
         fragmentManager.beginTransaction()
-            .replace(R.id.fragment_container,
+            .replace(
+                R.id.fragment_container,
                 detailMovieFragment.setInputArgumentsMovieDetailFrames(movie!!)!!
             )
             .addToBackStack(null)

@@ -3,18 +3,8 @@ package site.madcat.movielibrary.domain
 import java.io.Serializable
 
 
-class Movie
-    (
-    id: String,
-    title: String,
-    detail: String,
-    released: String,
-    ratingFilms: Long,
-    countViews: Int,
-    genreMovieId: Int
-) :
+class Movie (id: String,title: String, detail: String,released: String,ratingFilms: Long,countViews: Int, genreMovieId: Int) :
     Serializable {
-
     var id: String
     var detail: String
     var title: String
@@ -29,9 +19,7 @@ class Movie
 
 
 
-    /*  fun getId(): String {
-          return id
-      }*/
+
 
     init {
         this.id=id

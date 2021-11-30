@@ -29,7 +29,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
             holder.titleTextView.text=(movie.title)
             holder.releasedTextView.text=(movie.released + " " + movie.id)
             holder.movieImage.setOnClickListener {
-                itemClickListener!!.onItemClickListener(movie)
+                itemClickListener?.onItemClickListener(movie)
             }
     }
 

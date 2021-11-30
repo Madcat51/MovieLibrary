@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import by.kirich1409.viewbindingdelegate.viewBinding
-import org.w3c.dom.Text
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentDetailMovieBinding
 import site.madcat.movielibrary.domain.Movie
@@ -44,7 +43,7 @@ class DetailMovieFragment : Fragment() {
 
     private fun getParams() {
         val argument=arguments
-        val movie: Movie?=argument!!.getSerializable(Movie::class.java.getSimpleName()) as Movie?
+        val movie: Movie?=argument?.getSerializable(Movie::class.java.getSimpleName()) as Movie?
         getMovieDetail(movie)
     }
 
