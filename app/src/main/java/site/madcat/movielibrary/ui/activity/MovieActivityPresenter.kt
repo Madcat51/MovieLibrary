@@ -9,7 +9,7 @@ import site.madcat.movielibrary.ui.homeFragment.HomeFragmentPresenter
 import java.util.*
 
 
-class MovieActivityPresenter : MovieActivityContract.MovieActivityInterface{
+class MovieActivityPresenter : MovieActivityContract.MovieActivityInterface {
     private var view: MovieActivity?=null
     private lateinit var repository: MovieRepository
 
@@ -380,8 +380,6 @@ class MovieActivityPresenter : MovieActivityContract.MovieActivityInterface{
 
         }
     }
-
-
 
 
 }

@@ -24,7 +24,6 @@ class DetailMovieFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     fun initialsView() {
@@ -47,6 +46,8 @@ class DetailMovieFragment : Fragment() {
         getMovieDetail(movie)
     }
 
+
+
     private fun getMovieDetail(movie: Movie?) {
         titleTextView.text=movie?.title
         detailTextView.text=movie?.detail
@@ -54,12 +55,13 @@ class DetailMovieFragment : Fragment() {
         ratingTextView.text="Рейтинг "+movie?.ratingFilms.toString()
     }
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_detail_movie, container, false)
-
     }
 
     fun setInputArgumentsMovieDetailFrames(movie: Movie?): DetailMovieFragment? {

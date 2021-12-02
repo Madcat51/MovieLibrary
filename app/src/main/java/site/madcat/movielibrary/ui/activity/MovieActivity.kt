@@ -23,12 +23,19 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private lateinit var bottomNavigationItemView: BottomNavigationView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater)
+
+
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         movieActivityPresenter.onAttach(this)
         movieActivityPresenter.fillRepository()//(заполняем, временно)
+
+
         initNavigation()
     }
 
@@ -45,7 +52,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     }
 
     fun initNavigation() {
-        bottomNavigationItemView=binding.navView
+        bottomNavigationItemView=binding!!.navView
         loadFragment(HomeFragment())
         bottomNavigationItemView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -81,7 +88,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     override fun loadMovie(movie: Movie?) {
         setDetailMovieFragment(movie)
-
     }
 
 }
