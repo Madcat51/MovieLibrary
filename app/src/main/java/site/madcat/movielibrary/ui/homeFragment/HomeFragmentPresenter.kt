@@ -13,13 +13,12 @@ class HomeFragmentPresenter() : ViewModel(), HomeFragmentContract.HomeFragmentIn
     HomeAdapter.IItemClickListener {
     override val respond=MutableLiveData<String>()
     private var view: HomeFragment?=null
-      lateinit var repository: MovieRepository
-
+    lateinit var repository: MovieRepository
 
 
     override fun onAttach(view: HomeFragment) {
         this.view=view
-        repository=(view.requireActivity().application as App).repository
+      repository=(view.requireActivity().application as App).repository
     }
 
     override fun onDetach() {

@@ -47,14 +47,12 @@ class DetailMovieFragment : Fragment() {
     }
 
 
-
     private fun getMovieDetail(movie: Movie?) {
         titleTextView.text=movie?.title
         detailTextView.text=movie?.detail
-        yearTextView.text="Релиз "+movie?.released
-        ratingTextView.text="Рейтинг "+movie?.ratingFilms.toString()
+        yearTextView.text="Релиз " + movie?.released
+        ratingTextView.text="Рейтинг " + movie?.ratingFilms.toString()
     }
-
 
 
     override fun onCreateView(

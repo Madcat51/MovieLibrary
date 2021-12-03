@@ -1,7 +1,6 @@
 package site.madcat.movielibrary.ui.homeFragment
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import site.madcat.movielibrary.domain.Movie
 
 class HomeFragmentContract {

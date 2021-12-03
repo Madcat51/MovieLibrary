@@ -14,7 +14,6 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     private var itemClickListener: IItemClickListener?=null
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieVH {
         val view: View=
             LayoutInflater.from(parent.context).inflate(R.layout.group1_item_moive, parent, false)
@@ -26,11 +25,11 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     override fun onBindViewHolder(holder: HomeMovieVH, position: Int) {
         val movie: Movie=getItem(position)
 
-            holder.titleTextView.text=(movie.title)
-            holder.releasedTextView.text=(movie.released + " " + movie.id)
-            holder.movieImage.setOnClickListener {
-                itemClickListener?.onItemClickListener(movie)
-            }
+        holder.titleTextView.text=(movie.title)
+        holder.releasedTextView.text=(movie.released + " " + movie.id)
+        holder.movieImage.setOnClickListener {
+            itemClickListener?.onItemClickListener(movie)
+        }
     }
 
     override fun getItemCount()=data.size

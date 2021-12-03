@@ -4,8 +4,6 @@ package site.madcat.movielibrary.ui.activity
 import site.madcat.movielibrary.domain.Movie
 import site.madcat.movielibrary.domain.MovieRepository
 import site.madcat.movielibrary.App
-import site.madcat.movielibrary.ui.homeFragment.HomeFragment
-import site.madcat.movielibrary.ui.homeFragment.HomeFragmentPresenter
 import java.util.*
 
 
