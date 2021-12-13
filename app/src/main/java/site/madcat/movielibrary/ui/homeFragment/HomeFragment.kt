@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentHomeBinding
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 import site.madcat.movielibrary.ui.home.HomeAdapter
 
 
@@ -62,14 +62,14 @@ class HomeFragment : Fragment()  {
 
         recyclerView.setAdapter(adapter)
         adapter?.setOnItemClickListener(object : HomeAdapter.IItemClickListener {
-            override fun onItemClickListener(movie: Movie) {
+            override fun onItemClickListener(movie: MovieEntity) {
                 controller?.loadMovie(movie)
             }
         })
     }
 
     interface Controller {
-        fun loadMovie(movie: Movie?)
+        fun loadMovie(movie: MovieEntity?)
     }
 
 }

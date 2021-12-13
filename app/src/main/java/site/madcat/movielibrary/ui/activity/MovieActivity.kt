@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.ActivityMainBinding
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 import site.madcat.movielibrary.ui.detailMovieFragment.DetailMovieFragment
 import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
@@ -31,7 +31,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         movieActivityPresenter.onAttach(this)
-        movieActivityPresenter.fillRepository()//(заполняем, временно)
+
         baseSnackView=binding.LinearLayout
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
@@ -80,7 +80,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             .commit()
     }
 
-    fun setDetailMovieFragment(movie: Movie?) {
+    fun setDetailMovieFragment(movie: MovieEntity?) {
         var detailMovieFragment=DetailMovieFragment()
         fragmentManager.beginTransaction()
             .replace(
@@ -91,7 +91,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             .commit()
     }
 
-    override fun loadMovie(movie: Movie?) {
+    override fun loadMovie(movie: MovieEntity?) {
         setDetailMovieFragment(movie)
     }
 

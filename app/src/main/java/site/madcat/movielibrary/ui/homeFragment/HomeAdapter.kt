@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import site.madcat.movielibrary.R
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 
 
 class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
-    private var data: ArrayList<Movie> = ArrayList<Movie>()
+    private var data: ArrayList<MovieEntity> = ArrayList<MovieEntity>()
     private var itemClickListener: IItemClickListener?=null
 
 
@@ -23,10 +23,10 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
 
 
     override fun onBindViewHolder(holder: HomeMovieVH, position: Int) {
-        val movie: Movie=getItem(position)
+        val movie: MovieEntity=getItem(position)
 
         holder.titleTextView.text=(movie.title)
-        holder.releasedTextView.text=(movie.released + " " + movie.id)
+        holder.releasedTextView.text=(movie.release_date + " " + movie.id)
         holder.movieImage.setOnClickListener {
             itemClickListener?.onItemClickListener(movie)
         }
@@ -34,11 +34,11 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
 
     override fun getItemCount()=data.size
 
-    fun setData(data: List<Movie?>) {
-        this.data=data as ArrayList<Movie>
+    fun setData(data: List<MovieEntity?>) {
+        this.data=data as ArrayList<MovieEntity>
     }
 
-    private fun getItem(position: Int): Movie {
+    private fun getItem(position: Int): MovieEntity {
         return data[position]
     }
 
@@ -47,6 +47,6 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     }
 
     interface IItemClickListener {
-        fun onItemClickListener(movie: Movie)
+        fun onItemClickListener(movie: MovieEntity)
     }
 }

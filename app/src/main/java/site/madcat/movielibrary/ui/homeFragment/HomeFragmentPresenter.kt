@@ -4,7 +4,7 @@ package site.madcat.movielibrary.ui.homeFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import site.madcat.movielibrary.App
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 import site.madcat.movielibrary.domain.MovieRepository
 import site.madcat.movielibrary.ui.home.HomeAdapter
 
@@ -25,13 +25,13 @@ class HomeFragmentPresenter() : ViewModel(), HomeFragmentContract.HomeFragmentIn
         view=null
     }
 
-    override fun onMovieClick(movie: Movie) {
+    override fun onMovieClick(movie: MovieEntity) {
         var title=movie.title
         respond.postValue(title)
     }
 
 
-    override fun onItemClickListener(movie: Movie) {}
+    override fun onItemClickListener(movie: MovieEntity) {}
 
 
 }

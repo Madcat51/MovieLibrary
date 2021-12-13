@@ -1,7 +1,7 @@
 package site.madcat.movielibrary.ui.homeFragment
 
 import androidx.lifecycle.LiveData
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 
 class HomeFragmentContract {
 
@@ -11,7 +11,7 @@ class HomeFragmentContract {
 
         fun onAttach(view: HomeFragment)
         fun onDetach()
-        fun onMovieClick(movie: Movie)
+        fun onMovieClick(movie: MovieEntity)
 
     }
 }

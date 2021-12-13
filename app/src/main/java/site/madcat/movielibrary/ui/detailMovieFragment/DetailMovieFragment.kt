@@ -10,7 +10,7 @@ import android.widget.TextView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentDetailMovieBinding
-import site.madcat.movielibrary.domain.Movie
+import site.madcat.movielibrary.domain.MovieEntity
 
 
 class DetailMovieFragment : Fragment() {
@@ -42,16 +42,16 @@ class DetailMovieFragment : Fragment() {
 
     private fun getParams() {
         val argument=arguments
-        val movie: Movie?=argument?.getSerializable(Movie::class.java.getSimpleName()) as Movie?
+        val movie: MovieEntity?=argument?.getSerializable(MovieEntity::class.java.getSimpleName()) as MovieEntity?
         getMovieDetail(movie)
     }
 
 
-    private fun getMovieDetail(movie: Movie?) {
+    private fun getMovieDetail(movie: MovieEntity?) {
         titleTextView.text=movie?.title
-        detailTextView.text=movie?.detail
-        yearTextView.text="Релиз " + movie?.released
-        ratingTextView.text="Рейтинг " + movie?.ratingFilms.toString()
+        detailTextView.text=movie?.overview
+        yearTextView.text="Релиз " + movie?.release_date
+        ratingTextView.text="Рейтинг " + movie?.popularity.toString()
     }
 
 
@@ -62,10 +62,10 @@ class DetailMovieFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail_movie, container, false)
     }
 
-    fun setInputArgumentsMovieDetailFrames(movie: Movie?): DetailMovieFragment? {
+    fun setInputArgumentsMovieDetailFrames(movie: MovieEntity?): DetailMovieFragment? {
         val detailMovieFragment: DetailMovieFragment=DetailMovieFragment()
         val bundle=Bundle()
-        bundle.putSerializable(Movie::class.java.getSimpleName(), movie)
+        bundle.putSerializable(MovieEntity::class.java.getSimpleName(), movie)
         detailMovieFragment.setArguments(bundle)
         return detailMovieFragment
     }
