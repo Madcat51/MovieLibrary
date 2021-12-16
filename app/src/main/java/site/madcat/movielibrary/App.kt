@@ -2,9 +2,11 @@ package site.madcat.movielibrary
 
 import android.app.Application
 import android.content.Context
+import site.madcat.movielibrary.domain.GetMovieRepoInterface
 import site.madcat.movielibrary.domain.MovieRepository
 
 class App : Application() {
+    // val repository:GetMovieRepoInterface by Lazy {TODO}
     val repository=MovieRepository()
 }
 

@@ -58,16 +58,12 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             when (item.itemId) {
                 R.id.navigation_home -> {
                     loadFragment(HomeFragment())
-                    bottomNavigationItemView.showSnackBar("Home", baseSnackView)
                 }
                 R.id.navigation_favorites -> {
                     loadFragment(FavoritesFragment())
-                    bottomNavigationItemView.showSnackBar("Favorites", baseSnackView)
-
                 }
                 R.id.navigation_raiting -> {
                     loadFragment(RaitingFragment())
-                    bottomNavigationItemView.showSnackBar("Raiting", baseSnackView)
                 }
             }; true
         }

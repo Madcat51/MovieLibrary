@@ -9,14 +9,14 @@ class MovieRepository : MovieLocalInterface {
     override val movie: List<MovieEntity?>
         get()=ArrayList(cash)
 
-    override fun addMovie(movie: MovieEntity?): String {
+    override fun addMovie(movie: MovieEntity?) {
         val newId=++counter
-        movie!!.setID(newId.toString())
-        cash.add(movie)
-        return newId.toString()
+
+        cash.add(movie!!)
+
     }
 
-    override fun editMovie(id: Int, movie: MovieEntity?): Boolean {
+/*    override fun editMovie(id: Int, movie: MovieEntity?): Boolean {
         deleteMovie(id)
         movie!!.setID(id.toString())
         cash.add(movie)
@@ -31,7 +31,7 @@ class MovieRepository : MovieLocalInterface {
             }
         }
         return false
-    }
+    }*/
 
     fun getMovie(): Any? {
         return ArrayList<Any?>(cash)

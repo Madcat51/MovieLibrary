@@ -65,7 +65,7 @@ class DetailMovieFragment : Fragment() {
     fun setInputArgumentsMovieDetailFrames(movie: MovieEntity?): DetailMovieFragment? {
         val detailMovieFragment: DetailMovieFragment=DetailMovieFragment()
         val bundle=Bundle()
-        bundle.putSerializable(MovieEntity::class.java.getSimpleName(), movie)
+        bundle.putSerializable(MovieEntity::class.java.getSimpleName(), movie!!)
         detailMovieFragment.setArguments(bundle)
         return detailMovieFragment
     }
