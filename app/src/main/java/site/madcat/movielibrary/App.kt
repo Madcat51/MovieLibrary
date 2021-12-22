@@ -2,12 +2,12 @@ package site.madcat.movielibrary
 
 import android.app.Application
 import android.content.Context
-import site.madcat.movielibrary.domain.GetMovieRepoInterface
-import site.madcat.movielibrary.domain.MovieRepository
+import site.madcat.movielibrary.data.GetJSONMovieImpl
+import site.madcat.movielibrary.domain.GetJSONMovieInterface
 
 class App : Application() {
-    // val repository:GetMovieRepoInterface by Lazy {TODO}
-    val repository=MovieRepository()
+    val repository:GetJSONMovieInterface by lazy {GetJSONMovieImpl()}
+
 }
 
 val Context.app

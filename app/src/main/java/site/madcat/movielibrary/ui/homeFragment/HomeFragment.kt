@@ -14,16 +14,21 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentHomeBinding
 import site.madcat.movielibrary.domain.MovieEntity
+import site.madcat.movielibrary.ui.activity.MovieActivity
 import site.madcat.movielibrary.ui.home.HomeAdapter
 
 
 class HomeFragment : Fragment()  {
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val viewModel: HomeFragmentContract.HomeFragmentInterface by viewModels<HomeFragmentPresenter>()
     private lateinit var recyclerView: RecyclerView
     private val adapter=HomeAdapter()
     private var homeFragmentPresenter=HomeFragmentPresenter()
     private var controller: Controller?=null
+
+
+
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,6 +53,7 @@ class HomeFragment : Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         homeFragmentPresenter.onAttach(this)
+
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -58,7 +64,8 @@ class HomeFragment : Fragment()  {
     private fun initView() {
         recyclerView=binding.homeFragmentGenre1RecyclerView
         recyclerView.setLayoutManager(GridLayoutManager(context, 3))
-        adapter.setData(homeFragmentPresenter.repository.movie)
+
+        adapter.setData(homeFragmentPresenter.repository.getMovieSync( "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"))
 
         recyclerView.setAdapter(adapter)
         adapter?.setOnItemClickListener(object : HomeAdapter.IItemClickListener {
