@@ -64,8 +64,9 @@ class HomeFragment : Fragment()  {
     private fun initView() {
         recyclerView=binding.homeFragmentGenre1RecyclerView
         recyclerView.setLayoutManager(GridLayoutManager(context, 3))
-
-        adapter.setData(homeFragmentPresenter.repository.getMovieSync( "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"))
+        adapter.setData(homeFragmentPresenter.repository.movie)
+        adapter.notifyDataSetChanged();
+        //adapter.setData(homeFragmentPresenter.repository.getMovieSync( "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"))
 
         recyclerView.setAdapter(adapter)
         adapter?.setOnItemClickListener(object : HomeAdapter.IItemClickListener {

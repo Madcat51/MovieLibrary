@@ -17,7 +17,9 @@ import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
 import com.google.android.material.snackbar.Snackbar
 import site.madcat.movielibrary.app
+import site.madcat.movielibrary.data.GetJSONMovieImpl
 import site.madcat.movielibrary.domain.GetJSONMovieInterface
+import site.madcat.movielibrary.domain.LocalMovieRepository
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
@@ -28,30 +30,18 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private var fragmentManager: FragmentManager=supportFragmentManager
     private lateinit var bottomNavigationItemView: BottomNavigationView
     private lateinit var baseSnackView: View
-    
-    val repository: GetJSONMovieInterface by lazy { app.repository }
 
-    val urlPath: String=
-        "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         movieActivityPresenter.onAttach(this)
-
         baseSnackView=binding.LinearLayout
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
         initNavigation()
-
-        Thread {
-            repository.getMovieSync(urlPath)
-        }.start()
-
-
-       // movieActivityPresenter.getMovie()
     }
 
 
@@ -105,7 +95,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     override fun loadMovie(movie: MovieEntity?) {
         setDetailMovieFragment(movie)
     }
-
 
 
     fun View.showSnackBar(

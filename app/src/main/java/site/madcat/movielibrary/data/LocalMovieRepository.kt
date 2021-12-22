@@ -24,6 +24,10 @@ class LocalMovieRepository : LocalMovieInterface {
         return false
     }
 
+    override fun clear() {
+     cash.clear()
+    }
+
     fun getMovie(): Any? {
         return ArrayList<Any?>(cash)
     };
