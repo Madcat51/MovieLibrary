@@ -4,6 +4,7 @@ package site.madcat.movielibrary.ui.activity
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.update
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -28,7 +29,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private lateinit var binding: ActivityMainBinding
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
-    private lateinit var bottomNavigationItemView: BottomNavigationView
+    lateinit var bottomNavigationItemView: BottomNavigationView
     private lateinit var baseSnackView: View
 
 
@@ -42,6 +43,8 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             loadFragment(HomeFragment())
         }
         initNavigation()
+
+
     }
 
 
@@ -72,7 +75,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
                 }
             }; true
         }
-
     }
 
     fun loadFragment(fragment: Fragment) {
@@ -95,14 +97,4 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     override fun loadMovie(movie: MovieEntity?) {
         setDetailMovieFragment(movie)
     }
-
-
-    fun View.showSnackBar(
-        text: String,
-        action: View,
-        length: Int=Snackbar.LENGTH_SHORT
-    ) {
-        Snackbar.make(this, text, length).show()
-    }
-
 }

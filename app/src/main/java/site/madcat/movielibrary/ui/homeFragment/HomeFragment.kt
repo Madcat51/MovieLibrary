@@ -18,16 +18,12 @@ import site.madcat.movielibrary.ui.activity.MovieActivity
 import site.madcat.movielibrary.ui.home.HomeAdapter
 
 
-class HomeFragment : Fragment()  {
+class HomeFragment : Fragment() {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private lateinit var recyclerView: RecyclerView
     private val adapter=HomeAdapter()
     private var homeFragmentPresenter=HomeFragmentPresenter()
     private var controller: Controller?=null
-
-
-
-
 
 
     override fun onAttach(context: Context) {
@@ -44,9 +40,9 @@ class HomeFragment : Fragment()  {
         controller=null
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,   savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -66,8 +62,6 @@ class HomeFragment : Fragment()  {
         recyclerView.setLayoutManager(GridLayoutManager(context, 3))
         adapter.setData(homeFragmentPresenter.repository.movie)
         adapter.notifyDataSetChanged();
-        //adapter.setData(homeFragmentPresenter.repository.getMovieSync( "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"))
-
         recyclerView.setAdapter(adapter)
         adapter?.setOnItemClickListener(object : HomeAdapter.IItemClickListener {
             override fun onItemClickListener(movie: MovieEntity) {
@@ -76,7 +70,13 @@ class HomeFragment : Fragment()  {
         })
     }
 
+    fun updateAdapter() {
+        adapter.notifyDataSetChanged();
+    }
+
     interface Controller {
+
+
         fun loadMovie(movie: MovieEntity?)
     }
 

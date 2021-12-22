@@ -24,8 +24,6 @@ data class MovieEntity (
     val vote_average : Double,
     val vote_count : Int
 ) : Serializable{
-
-
     fun setID(id: String): String {
         return id
     }}

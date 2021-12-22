@@ -1,8 +1,6 @@
 package site.madcat.movielibrary.domain
 
 class LocalMovieRepository : LocalMovieInterface {
-
-
     var cash: ArrayList<MovieEntity> =ArrayList<MovieEntity>()
     private var counter=0
 
@@ -25,7 +23,7 @@ class LocalMovieRepository : LocalMovieInterface {
     }
 
     override fun clear() {
-     cash.clear()
+        cash.clear()
     }
 
     fun getMovie(): Any? {

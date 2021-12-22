@@ -10,7 +10,7 @@ import site.madcat.movielibrary.domain.MovieEntity
 
 
 class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
-    private var data: ArrayList<MovieEntity> = ArrayList<MovieEntity>()
+    private var data: ArrayList<MovieEntity> =ArrayList<MovieEntity>()
     private var itemClickListener: IItemClickListener?=null
 
 
@@ -45,6 +45,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     fun setOnItemClickListener(itemClickListener: IItemClickListener) {
         this.itemClickListener=itemClickListener
     }
+
 
     interface IItemClickListener {
         fun onItemClickListener(movie: MovieEntity)
