@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/universal_margin"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="auto"
+        app:cardCornerRadius="@dimen/card_radius">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:focusable="auto"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/movie_image_image_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                app:srcCompat="@drawable/cat" />
+
+            <TextView
+                android:id="@+id/title_text_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:textSize="@dimen/font_size_title" />
+
+            <TextView
+                android:id="@+id/released_detail_text_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:textSize="@dimen/font_size_movie_released" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

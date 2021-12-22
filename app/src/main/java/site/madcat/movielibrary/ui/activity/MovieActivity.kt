@@ -28,6 +28,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private var fragmentManager: FragmentManager=supportFragmentManager
     private lateinit var bottomNavigationItemView: BottomNavigationView
     private lateinit var baseSnackView: View
+    
     val repository: GetJSONMovieInterface by lazy { app.repository }
 
     val urlPath: String=
