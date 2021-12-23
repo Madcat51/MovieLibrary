@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 
 
 class MovieActivityContract {
-    enum class State { OK, ERROR }
+
 
     interface MovieActivityInterface {
         val requestResult:MutableLiveData<String>
