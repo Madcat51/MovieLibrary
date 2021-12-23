@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.SyncStateContract.Helpers.update
 import android.view.View
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -30,6 +31,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
     lateinit var bottomNavigationItemView: BottomNavigationView
+    private val homeFragment=HomeFragment()
     private lateinit var baseSnackView: View
 
 
@@ -43,8 +45,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             loadFragment(HomeFragment())
         }
         initNavigation()
-
-
+        initViewModel(movieActivityPresenter)
     }
 
 
@@ -65,7 +66,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         bottomNavigationItemView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    loadFragment(HomeFragment())
+                    loadFragment(homeFragment)
                 }
                 R.id.navigation_favorites -> {
                     loadFragment(FavoritesFragment())
@@ -96,5 +97,24 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     override fun loadMovie(movie: MovieEntity?) {
         setDetailMovieFragment(movie)
+    }
+
+    private fun initViewModel(viewModel: MovieActivityContract.MovieActivityInterface) {
+        viewModel.requestResult.observe(this) { state ->
+            if (state.equals("OK")) {
+                homeFragment.updateAdapter()
+                bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
+            } else {
+                bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
+            }
+        }
+    }
+
+    fun View.showSnackBar(
+        text: String,
+        action: View,
+        length: Int=Snackbar.LENGTH_SHORT
+    ) {
+        Snackbar.make(this, text, length).show()
     }
 }

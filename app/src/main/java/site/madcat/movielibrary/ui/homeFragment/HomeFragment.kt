@@ -1,6 +1,7 @@
 package site.madcat.movielibrary.ui.homeFragment
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -61,7 +62,6 @@ class HomeFragment : Fragment() {
         recyclerView=binding.homeFragmentGenre1RecyclerView
         recyclerView.setLayoutManager(GridLayoutManager(context, 3))
         adapter.setData(homeFragmentPresenter.repository.movie)
-        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter)
         adapter?.setOnItemClickListener(object : HomeAdapter.IItemClickListener {
             override fun onItemClickListener(movie: MovieEntity) {
@@ -70,13 +70,12 @@ class HomeFragment : Fragment() {
         })
     }
 
+
     fun updateAdapter() {
-        adapter.notifyDataSetChanged();
+        adapter?.notifyDataSetChanged()
     }
 
     interface Controller {
-
-
         fun loadMovie(movie: MovieEntity?)
     }
 

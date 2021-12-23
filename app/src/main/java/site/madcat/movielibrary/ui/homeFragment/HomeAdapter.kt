@@ -14,6 +14,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     private var itemClickListener: IItemClickListener?=null
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieVH {
         val view: View=
             LayoutInflater.from(parent.context).inflate(R.layout.group1_item_moive, parent, false)
@@ -50,4 +51,5 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     interface IItemClickListener {
         fun onItemClickListener(movie: MovieEntity)
     }
+
 }

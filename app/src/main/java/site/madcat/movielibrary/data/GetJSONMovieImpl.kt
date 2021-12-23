@@ -32,7 +32,7 @@ class GetJSONMovieImpl : GetJSONMovieInterface {
                     repo.addMovie(it)
                 }
             }
-            result="ok"
+            result="OK"
         } catch (e: IOException) {
             result="ошибка"
 
