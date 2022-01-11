@@ -25,12 +25,18 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
     override fun onAttach(view: MovieActivity) {
         this.view=view
         repository=(view.application as App).repository
+        fillRepo()
+    }
+
+    override fun fillRepo(){
         Thread {
-         var res=getrepo.getMovieSync(urlPath, repository)
+
+            var res=getrepo.getMovieSync(urlPath, repository)
             runOnUiThread {requestResult.postValue(res.toString())}
-               // view.bottomNavigationItemView.showSnackBar(res,view.bottomNavigationItemView) }
+            // view.bottomNavigationItemView.showSnackBar(res,view.bottomNavigationItemView) }
         }.start()
     }
+
 
     override fun onDetach() {
         view=null

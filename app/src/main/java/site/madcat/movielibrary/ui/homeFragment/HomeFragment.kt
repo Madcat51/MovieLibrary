@@ -17,12 +17,16 @@ import site.madcat.movielibrary.databinding.FragmentHomeBinding
 import site.madcat.movielibrary.domain.MovieEntity
 import site.madcat.movielibrary.ui.activity.MovieActivity
 import site.madcat.movielibrary.ui.home.HomeAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import java.util.logging.Handler
+import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private lateinit var recyclerView: RecyclerView
     private val adapter=HomeAdapter()
+    var swipeRefreshLayout: SwipeRefreshLayout?=null
     private var homeFragmentPresenter=HomeFragmentPresenter()
     private var controller: Controller?=null
 
@@ -45,12 +49,24 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         homeFragmentPresenter.onAttach(this)
+        swipeRefresh()
 
+    }
+
+    private fun swipeRefresh() {
+        swipeRefreshLayout=binding.swipeRefreshLayout
+        swipeRefreshLayout?.setOnRefreshListener {
+
+         controller?.refreshMovie()
+            initView()
+            swipeRefreshLayout?.isRefreshing=false
+        }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -77,8 +93,10 @@ class HomeFragment : Fragment() {
 
     interface Controller {
         fun loadMovie(movie: MovieEntity?)
+        fun refreshMovie()
     }
 
 }
+
 
 

@@ -7,70 +7,80 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-    <ScrollView
+        android:id="@+id/swipe_Refresh_Layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:tag="Home">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:tag="Home">
 
-            <TextView
-                android:id="@+id/title_home_text_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_home"
-                android:textSize="@dimen/font_size_title" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/genre1_movie_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Жанр1"
-                android:textSize="@dimen/font_size_title" />
+                <TextView
+                    android:id="@+id/title_home_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_home"
+                    android:textSize="@dimen/font_size_title" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_fragment_genre1_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:contextClickable="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:ignore="TouchTargetSizeCheck"></androidx.recyclerview.widget.RecyclerView>
-            <TextView
-                android:id="@+id/genre2_movie_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Жанр2"
-                android:textSize="@dimen/font_size_title" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_fragment_genre2_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:contextClickable="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:ignore="TouchTargetSizeCheck"></androidx.recyclerview.widget.RecyclerView>
-            <TextView
-                android:id="@+id/genre3_movie_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Жанр3"
-                android:textSize="@dimen/font_size_title" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_fragment_genre3_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:contextClickable="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:ignore="TouchTargetSizeCheck"></androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/genre1_movie_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Жанр1"
+                    android:textSize="@dimen/font_size_title" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_fragment_genre1_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/genre2_movie_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Жанр2"
+                    android:textSize="@dimen/font_size_title" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_fragment_genre2_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/genre3_movie_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Жанр3"
+                    android:textSize="@dimen/font_size_title" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_fragment_genre3_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

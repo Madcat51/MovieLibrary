@@ -10,6 +10,7 @@ class MovieActivityContract {
         val requestResult:MutableLiveData<String>
 
         fun onAttach(view: MovieActivity)
+        fun fillRepo()
         fun onDetach()
         fun getMovie()
     }

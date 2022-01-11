@@ -44,6 +44,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
+
         initNavigation()
         initViewModel(movieActivityPresenter)
     }
@@ -108,6 +109,10 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
                 bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
             }
         }
+    }
+
+    override fun refreshMovie() {
+        movieActivityPresenter.fillRepo()
     }
 
     fun View.showSnackBar(
