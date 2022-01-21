@@ -79,7 +79,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         }
     }
 
-    
+
     fun loadFragment(fragment: Fragment) {
         fragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
