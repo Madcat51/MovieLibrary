@@ -1,12 +1,12 @@
 package site.madcat.movielibrary.ui.activity
 
 
+import android.content.IntentFilter
 import android.content.res.Configuration
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.SyncStateContract.Helpers.update
 import android.view.View
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,15 +18,12 @@ import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
 import com.google.android.material.snackbar.Snackbar
-import site.madcat.movielibrary.app
-import site.madcat.movielibrary.data.GetJSONMovieImpl
-import site.madcat.movielibrary.domain.GetJSONMovieInterface
-import site.madcat.movielibrary.domain.LocalMovieRepository
+import site.madcat.movielibrary.domain.MyReceiver
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
-
+    var myReceiver=MyReceiver()
     private lateinit var binding: ActivityMainBinding
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
@@ -49,7 +46,17 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         initViewModel(movieActivityPresenter)
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        val intentFilter=IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(myReceiver, intentFilter)
+    }
+    override fun onPause() {
+        super.onPause();
+        unregisterReceiver(myReceiver);
+    }
     fun getScreenOrientation(): Boolean {
         when (resources.configuration.orientation) {
             Configuration.ORIENTATION_PORTRAIT -> {
