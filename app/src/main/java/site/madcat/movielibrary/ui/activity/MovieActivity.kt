@@ -1,11 +1,15 @@
 package site.madcat.movielibrary.ui.activity
 
 
-import android.content.IntentFilter
+import android.content.*
 import android.content.res.Configuration
 import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
+import android.os.IBinder
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -18,18 +22,57 @@ import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
 import com.google.android.material.snackbar.Snackbar
-import site.madcat.movielibrary.domain.MyReceiver
+import site.madcat.movielibrary.MyLogService
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
-    var myReceiver=MyReceiver()
+    private val handlerThread: HandlerThread=HandlerThread("LogThread").apply { start() }
+    private val logerHandler: Handler by lazy { Handler(handlerThread.looper) }
+
     private lateinit var binding: ActivityMainBinding
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
     lateinit var bottomNavigationItemView: BottomNavigationView
     private val homeFragment=HomeFragment()
     private lateinit var baseSnackView: View
+
+
+
+
+
+    private val myReceiver: BroadcastReceiver=object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+                val networkInfo: NetworkInfo?=
+                    intent!!.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO)
+                if (networkInfo!!.isConnected) {
+                    logerWorkThread("Ok")
+                } else {
+                    logerWorkThread("Error")
+                }
+            }
+        }
+    }
+
+    fun logerWorkThread(status: String) {
+        logerHandler.post {
+            val serviceIntent=Intent(this, MyLogService::class.java)
+            serviceIntent.putExtra("NetworkStatus", status)
+            bindService(serviceIntent, connection, BIND_AUTO_CREATE)
+            unbindService(connection)
+        }
+    }
+
+    private val connection=object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
+            val myBinder=binder as MyLogService.MyBinder
+            myBinder.getService()
+        }
+        override fun onServiceDisconnected(name: ComponentName?) {
+        }
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,22 +84,22 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
-
         initNavigation()
         initViewModel(movieActivityPresenter)
     }
 
     override fun onResume() {
         super.onResume()
-
         val intentFilter=IntentFilter()
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(myReceiver, intentFilter)
     }
+
     override fun onPause() {
         super.onPause();
         unregisterReceiver(myReceiver);
     }
+
     fun getScreenOrientation(): Boolean {
         when (resources.configuration.orientation) {
             Configuration.ORIENTATION_PORTRAIT -> {
@@ -110,12 +153,12 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     private fun initViewModel(viewModel: MovieActivityContract.MovieActivityInterface) {
         viewModel.requestResult.observe(this) { state ->
-            if (state.equals("OK")) {
-                homeFragment.updateAdapter()
-                bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
-            } else {
-                bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
-            }
+            /*        if (state.equals("OK")) {
+                        homeFragment.updateAdapter()
+                        bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
+                    } else {
+                        bottomNavigationItemView.showSnackBar(state, bottomNavigationItemView)
+                    }*/
         }
     }
 

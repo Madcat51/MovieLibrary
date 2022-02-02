@@ -12,23 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieLibrary">
-        <receiver
-            android:name=".domain.MyReceiver"
+        <service
+            android:name=".MyLogService"
             android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-
-                <action android:name="android.net.conn.CONNECTIVITY_ACTION"/>
-            </intent-filter>
-        </receiver>
-
+            android:exported="true"></service>
         <activity
             android:name=".ui.activity.MovieActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
