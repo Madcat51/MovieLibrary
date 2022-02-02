@@ -1,19 +1,13 @@
 package site.madcat.movielibrary.ui.activity
 
 
-import android.content.*
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
-import android.os.Handler
-import android.os.HandlerThread
-import android.os.IBinder
-import android.view.View
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 
-import com.google.android.material.snackbar.Snackbar
+
 import site.madcat.movielibrary.App
-import site.madcat.movielibrary.MyLogService
+
 import site.madcat.movielibrary.data.GetJSONMovieImpl
 import site.madcat.movielibrary.domain.LocalMovieRepository
 
@@ -33,26 +27,11 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
         fillRepo()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-    }
-
-
-
-
     override fun fillRepo(){
         Thread {
             var res=getrepo.getMovieSync(urlPath, repository)
             runOnUiThread {requestResult.postValue(res.toString())}
-            // view.bottomNavigationItemView.showSnackBar(res,view.bottomNavigationItemView) }
-        }.start()
+            }.start()
     }
 
 

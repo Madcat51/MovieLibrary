@@ -27,18 +27,15 @@ import site.madcat.movielibrary.MyLogService
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
+
     private val handlerThread: HandlerThread=HandlerThread("LogThread").apply { start() }
     private val logerHandler: Handler by lazy { Handler(handlerThread.looper) }
-
     private lateinit var binding: ActivityMainBinding
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
     lateinit var bottomNavigationItemView: BottomNavigationView
     private val homeFragment=HomeFragment()
     private lateinit var baseSnackView: View
-
-
-
 
 
     private val myReceiver: BroadcastReceiver=object : BroadcastReceiver() {
@@ -75,6 +72,8 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
@@ -88,6 +87,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         initViewModel(movieActivityPresenter)
     }
 
+
     override fun onResume() {
         super.onResume()
         val intentFilter=IntentFilter()
@@ -99,6 +99,8 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         super.onPause();
         unregisterReceiver(myReceiver);
     }
+
+
 
     fun getScreenOrientation(): Boolean {
         when (resources.configuration.orientation) {
