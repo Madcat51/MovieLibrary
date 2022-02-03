@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,14 +41,17 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     private val myReceiver: BroadcastReceiver=object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            var networkStatus:String
             if (intent?.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
                 val networkInfo: NetworkInfo?=
                     intent!!.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO)
                 if (networkInfo!!.isConnected) {
-                    logerWorkThread("Ok")
+                    networkStatus="Ok"
                 } else {
-                    logerWorkThread("Error")
+                    networkStatus="Error"
                 }
+                logerWorkThread( networkStatus)
+                Toast.makeText(applicationContext, "NetworkStatus - "+networkStatus,Toast.LENGTH_SHORT).show()
             }
         }
     }
