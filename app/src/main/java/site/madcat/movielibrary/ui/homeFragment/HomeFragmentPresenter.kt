@@ -4,8 +4,6 @@ package site.madcat.movielibrary.ui.homeFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import site.madcat.movielibrary.App
-import site.madcat.movielibrary.app
-import site.madcat.movielibrary.domain.GetJSONMovieInterface
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.MovieEntity
 import site.madcat.movielibrary.ui.home.HomeAdapter

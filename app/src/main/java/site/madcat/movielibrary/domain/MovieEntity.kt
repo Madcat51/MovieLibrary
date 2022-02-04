@@ -1,29 +1,46 @@
 package site.madcat.movielibrary.domain
 
 import java.io.Serializable
+import com.google.gson.annotations.SerializedName
 
 data class ReturnPackage (
 
+    @SerializedName("page")
     val page : Int,
+    @SerializedName("results")
     val results : List<MovieEntity>,
-    val total_pages : Int,
-    val total_results : Int
+    @SerializedName("total_pages")
+    val totalpages : Int,
+    @SerializedName("total_results")
+    val totalresults : Int
 )
 data class MovieEntity (
-
+    @SerializedName("adult")
     val adult : Boolean,
+    @SerializedName("id")
     val id : Int,
-    val original_language : String,
-    val original_title : String,
+    @SerializedName("original_language")
+    val originallanguage : String,
+    @SerializedName("original_title")
+    val originaltitle : String,
+    @SerializedName("overview")
     val overview : String,
+    @SerializedName("popularity")
     val popularity : Double,
-    val poster_path : String,
-    val release_date : String,
+    @SerializedName("poster_path")
+    val posterpath : String,
+    @SerializedName("release_date")
+    val releasedate : String,
+    @SerializedName("title")
     val title : String,
+    @SerializedName("video")
     val video : Boolean,
-    val vote_average : Double,
-    val vote_count : Int
+    @SerializedName("vote_average")
+    val voteaverage : Double,
+    @SerializedName("vote_count")
+    val votecount : Int
 ) : Serializable{
+
     fun setID(id: String): String {
         return id
     }}

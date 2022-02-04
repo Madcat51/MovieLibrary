@@ -1,7 +1,7 @@
 package site.madcat.movielibrary.data
 
 import com.google.gson.Gson
-import site.madcat.movielibrary.domain.GetJSONMovieInterface
+import site.madcat.movielibrary.domain.GetMovieInterface
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.ReturnPackage
 import java.io.BufferedReader
@@ -10,7 +10,7 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class GetJSONMovieImpl : GetJSONMovieInterface {
+class GetMovieImpl : GetMovieInterface {
     private val gson by lazy { Gson() }
 
 
@@ -40,6 +40,14 @@ class GetJSONMovieImpl : GetJSONMovieInterface {
             urlConnection?.disconnect()
         }
         return result
+    }
+
+    override fun getReposForUserAsync(
+        userName: String,
+        onSuccess: (List<ReturnPackage>) -> Unit,
+        onError: (Throwable) -> Unit
+    ) {
+        TODO("Not yet implemented")
     }
 
 
