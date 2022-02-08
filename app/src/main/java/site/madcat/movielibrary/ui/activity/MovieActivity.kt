@@ -31,7 +31,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     private val handlerThread: HandlerThread=HandlerThread("LogThread").apply { start() }
     private val logerHandler: Handler by lazy { Handler(handlerThread.looper) }
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private var movieActivityPresenter=MovieActivityPresenter()
     private var fragmentManager: FragmentManager=supportFragmentManager
     lateinit var bottomNavigationItemView: BottomNavigationView

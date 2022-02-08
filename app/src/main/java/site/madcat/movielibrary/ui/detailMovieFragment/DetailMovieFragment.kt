@@ -50,7 +50,7 @@ class DetailMovieFragment : Fragment() {
     private fun getMovieDetail(movie: MovieEntity?) {
         titleTextView.text=movie?.title
         detailTextView.text=movie?.overview
-        yearTextView.text="Релиз " + movie?.release_date
+        yearTextView.text="Релиз " + movie?.releasedate
         ratingTextView.text="Рейтинг " + movie?.popularity.toString()
     }
 

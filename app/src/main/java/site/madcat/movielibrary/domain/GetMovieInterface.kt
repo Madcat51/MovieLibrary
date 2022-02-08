@@ -7,9 +7,8 @@ interface GetMovieInterface {
     fun getMovieSync(path: String, repo: LocalMovieRepository): String
 
 
-
-    fun getReposForUserAsync(
-        userName: String,
+    fun getMovieAsync(
+        repo:LocalMovieRepository,
         onSuccess: (List<ReturnPackage>) -> Unit,
         onError: (Throwable) -> Unit
     )

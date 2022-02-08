@@ -25,7 +25,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     override fun onBindViewHolder(holder: HomeMovieVH, position: Int) {
         val movie: MovieEntity=getItem(position)
         holder.titleTextView.text=(movie.title)
-        holder.releasedTextView.text=(movie.release_date + " " + movie.id)
+        holder.releasedTextView.text=(movie.releasedate + " " + movie.id)
         holder.movieImage.setOnClickListener {
             itemClickListener?.onItemClickListener(movie)
         }
