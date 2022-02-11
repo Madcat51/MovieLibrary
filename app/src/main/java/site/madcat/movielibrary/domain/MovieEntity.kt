@@ -3,16 +3,18 @@ package site.madcat.movielibrary.domain
 import java.io.Serializable
 import com.google.gson.annotations.SerializedName
 
+
+
 data class ReturnPackage (
 
     @SerializedName("page")
     val page : Int,
     @SerializedName("results")
     val results : List<MovieEntity>,
-    @SerializedName("total_pages")
-    val totalpages : Int,
-    @SerializedName("total_results")
-    val totalresults : Int
+    @SerializedName("totalpages")
+    val total_pages : Int,
+    @SerializedName("totalresults")
+    val total_results : Int
 )
 data class MovieEntity (
     @SerializedName("adult")

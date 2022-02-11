@@ -8,9 +8,10 @@ interface GetMovieInterface {
 
 
     fun getMovieAsync(
-        repo:LocalMovieRepository,
-        onSuccess: (List<ReturnPackage>) -> Unit,
+
+        onSuccess: (ReturnPackage) -> Unit,
         onError: (Throwable) -> Unit
+
     )
 
 

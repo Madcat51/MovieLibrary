@@ -10,36 +10,35 @@ import site.madcat.movielibrary.domain.GetMovieInterface
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.ReturnPackage
 
-private const val BASE_URL = "https://api.themoviedb.org/"
+private const val BASE_URL = "https://api.themoviedb.org/3/"
+
+
 class GetRetrofitMovieImpl:GetMovieInterface {
-
-
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     private var retrofitAPI: RetrofitLoadRepo = retrofit.create(RetrofitLoadRepo::class.java)
+
     override fun getMovieSync(path: String, repo: LocalMovieRepository): String {
         TODO("Not yet implemented")
     }
 
 
     override fun getMovieAsync(
-        repo: LocalMovieRepository,
-        onSuccess: (List<ReturnPackage>) -> Unit,
+        onSuccess: (ReturnPackage) -> Unit,
         onError: (Throwable) -> Unit
+
     ) {
-        retrofitAPI.loadMovie().enqueue(object:Callback<List<ReturnPackage>> {
-
-
-            override fun onFailure(call: Call<List<ReturnPackage>>, t: Throwable) {
+      retrofitAPI.loadMovie().enqueue(object:Callback<ReturnPackage>{
+            override fun onFailure(call: Call<ReturnPackage>, t: Throwable) {
                 onError(t)
             }
 
             override fun onResponse(
-                call: Call<List<ReturnPackage>>,
-                response: Response<List<ReturnPackage>>
+                call: Call<ReturnPackage>,
+                response: Response<ReturnPackage>
             ){
                 if (response.isSuccessful) {
                     onSuccess(response.body() ?: throw IllegalStateException("null result"))
@@ -47,10 +46,10 @@ class GetRetrofitMovieImpl:GetMovieInterface {
                     onError(Throwable("unknown error"))
                 }
             }
-
-
-        })
+      })
     }
+
+
 
 
 }

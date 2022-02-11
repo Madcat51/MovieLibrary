@@ -15,13 +15,9 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
     private var view: MovieActivity?=null
     private lateinit var repository: LocalMovieRepository
 
-
     val getrepo: GetRetrofitMovieImpl by lazy { GetRetrofitMovieImpl() }
 
-    val urlPath: String=
-        "https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&api_key=b46aa2f69329d4b3b5e8d2e1ea6b7886"
     override val requestResult=MutableLiveData<String>()
-
 
     override fun onAttach(view: MovieActivity) {
         this.view=view
@@ -32,20 +28,24 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
 
 
     override fun fillRepo() {
-        getrepo.getMovieAsync(repository,
+        getrepo.getMovieAsync(
             onSuccess={
+
+
+
+
+
+
+
+
                 view!!.binding.textView.text="Ok"
             },
             onError={
                 runOnUiThread {
                     view!!.binding.textView.text="error"
-
                 }
             }
-
         )
-
-
     }
 
 

@@ -51,7 +51,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
                     networkStatus="Error"
                 }
                 logerWorkThread( networkStatus)
-                Toast.makeText(applicationContext, "NetworkStatus - "+networkStatus,Toast.LENGTH_SHORT).show()
+
             }
         }
     }
