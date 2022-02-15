@@ -9,6 +9,7 @@ import site.madcat.movielibrary.App
 
 import site.madcat.movielibrary.data.GetRetrofitMovieImpl
 import site.madcat.movielibrary.domain.LocalMovieRepository
+import site.madcat.movielibrary.domain.MovieEntity
 
 
 class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, AppCompatActivity() {
@@ -31,14 +32,16 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
         getrepo.getMovieAsync(
             onSuccess={
 
+                val result:List<MovieEntity>?=it.results
+                repository.clear()
+                result?.forEach {
+                    repository.addMovie(it)}
 
 
 
 
 
 
-
-                view!!.binding.textView.text="Ok"
             },
             onError={
                 runOnUiThread {
