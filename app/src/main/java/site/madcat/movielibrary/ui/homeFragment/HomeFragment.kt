@@ -1,25 +1,19 @@
 package site.madcat.movielibrary.ui.homeFragment
 
-
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentHomeBinding
 import site.madcat.movielibrary.domain.MovieEntity
-import site.madcat.movielibrary.ui.activity.MovieActivity
-import site.madcat.movielibrary.ui.home.HomeAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import java.util.logging.Handler
-import kotlin.random.Random
+
 
 
 class HomeFragment : Fragment() {

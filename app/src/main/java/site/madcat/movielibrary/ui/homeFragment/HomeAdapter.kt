@@ -1,13 +1,16 @@
-package site.madcat.movielibrary.ui.home
+package site.madcat.movielibrary.ui.homeFragment
 
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.domain.MovieEntity
 
+private const val IMAGE_PATH =
+    "https://image.tmdb.org/t/p/w300/"
 
 class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
     private var data: ArrayList<MovieEntity> =ArrayList<MovieEntity>()
@@ -26,6 +29,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeMovieVH>() {
         val movie: MovieEntity=getItem(position)
         holder.titleTextView.text=(movie.title)
         holder.releasedTextView.text=(movie.releasedate + " " + movie.id)
+        Picasso.get().load(IMAGE_PATH+movie.posterpath).into(holder.movieImage);
         holder.movieImage.setOnClickListener {
             itemClickListener?.onItemClickListener(movie)
         }

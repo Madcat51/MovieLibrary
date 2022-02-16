@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import site.madcat.movielibrary.App
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.MovieEntity
-import site.madcat.movielibrary.ui.home.HomeAdapter
-
 
 class HomeFragmentPresenter() : ViewModel(), HomeFragmentContract.HomeFragmentInterface,
     HomeAdapter.IItemClickListener {

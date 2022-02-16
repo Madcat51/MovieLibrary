@@ -4,48 +4,50 @@ import java.io.Serializable
 import com.google.gson.annotations.SerializedName
 
 
-
-data class ReturnPackage (
+data class ReturnPackage(
 
     @SerializedName("page")
-    val page : Int,
+    val page: Int,
     @SerializedName("results")
-    val results : List<MovieEntity>,
+    val results: List<MovieEntity>,
     @SerializedName("totalpages")
-    val total_pages : Int,
+    val total_pages: Int,
     @SerializedName("totalresults")
-    val total_results : Int
+    val total_results: Int
 )
-data class MovieEntity (
+
+data class MovieEntity(
     @SerializedName("adult")
-    val adult : Boolean,
+    val adult: Boolean,
     @SerializedName("id")
-    val id : Int,
+    val id: Int,
     @SerializedName("original_language")
-    val originallanguage : String,
+    val originallanguage: String,
     @SerializedName("original_title")
-    val originaltitle : String,
+    val originaltitle: String,
     @SerializedName("overview")
-    val overview : String,
+    val overview: String,
     @SerializedName("popularity")
-    val popularity : Double,
+    val popularity: Double,
     @SerializedName("poster_path")
-    val posterpath : String,
+    val posterpath: String,
     @SerializedName("release_date")
-    val releasedate : String,
+    val releasedate: String,
     @SerializedName("title")
-    val title : String,
+    val title: String,
     @SerializedName("video")
-    val video : Boolean,
+    val video: Boolean,
     @SerializedName("vote_average")
-    val voteaverage : Double,
+    val voteaverage: Double,
     @SerializedName("vote_count")
-    val votecount : Int
-) : Serializable{
+    val votecount: Int
+
+) : Serializable {
 
     fun setID(id: String): String {
         return id
-    }}
+    }
+}
 
 
 

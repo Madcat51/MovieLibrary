@@ -1,12 +1,7 @@
 package site.madcat.movielibrary.ui.activity
-
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
-
-
 import site.madcat.movielibrary.App
-
 import site.madcat.movielibrary.data.GetRetrofitMovieImpl
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.MovieEntity
@@ -36,12 +31,6 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
                 repository.clear()
                 result?.forEach {
                     repository.addMovie(it)}
-
-
-
-
-
-
             },
             onError={
                 runOnUiThread {
