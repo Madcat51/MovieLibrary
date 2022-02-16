@@ -8,10 +8,8 @@ interface GetMovieInterface {
 
 
     fun getMovieAsync(
-
         onSuccess: (ReturnPackage) -> Unit,
         onError: (Throwable) -> Unit
-
     )
 
 

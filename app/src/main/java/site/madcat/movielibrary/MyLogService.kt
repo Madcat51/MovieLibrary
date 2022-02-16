@@ -18,7 +18,8 @@ class MyLogService : Service() {
         val currentDate=sdf.format(Date())
         val extras=intent.extras
         if (extras != null) {
-            str=currentDate + " Network Status - " + intent.getSerializableExtra("NetworkStatus") as String + "\n";
+            str=
+                currentDate + " Network Status - " + intent.getSerializableExtra("NetworkStatus") as String + "\n";
             writeLogFiile("log.txt", str)
         }
         return binder

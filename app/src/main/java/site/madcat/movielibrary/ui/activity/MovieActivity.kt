@@ -5,16 +5,17 @@ import android.content.*
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
+import site.madcat.movielibrary.MyLogService
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.ActivityMainBinding
 import site.madcat.movielibrary.domain.MovieEntity
@@ -22,8 +23,6 @@ import site.madcat.movielibrary.ui.detailMovieFragment.DetailMovieFragment
 import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
-import com.google.android.material.snackbar.Snackbar
-import site.madcat.movielibrary.MyLogService
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
@@ -32,8 +31,8 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private val handlerThread: HandlerThread=HandlerThread("LogThread").apply { start() }
     private val logerHandler: Handler by lazy { Handler(handlerThread.looper) }
     lateinit var binding: ActivityMainBinding
-    private var movieActivityPresenter=MovieActivityPresenter()
-    private var fragmentManager: FragmentManager=supportFragmentManager
+    private val movieActivityPresenter=MovieActivityPresenter()
+    private val fragmentManager: FragmentManager=supportFragmentManager
     lateinit var bottomNavigationItemView: BottomNavigationView
     private val homeFragment=HomeFragment()
     private lateinit var baseSnackView: View
@@ -41,7 +40,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
 
     private val myReceiver: BroadcastReceiver=object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            var networkStatus:String
+            var networkStatus: String
             if (intent?.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
                 val networkInfo: NetworkInfo?=
                     intent!!.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO)
@@ -50,7 +49,7 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
                 } else {
                     networkStatus="Error"
                 }
-                logerWorkThread( networkStatus)
+                logerWorkThread(networkStatus)
 
             }
         }
@@ -70,12 +69,10 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             val myBinder=binder as MyLogService.MyBinder
             myBinder.getService()
         }
+
         override fun onServiceDisconnected(name: ComponentName?) {
         }
     }
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,7 +100,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         super.onPause();
         unregisterReceiver(myReceiver);
     }
-
 
 
     fun getScreenOrientation(): Boolean {

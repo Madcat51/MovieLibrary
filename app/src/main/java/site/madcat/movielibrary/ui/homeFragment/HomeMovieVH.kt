@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import site.madcat.movielibrary.R
 
-
 class HomeMovieVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     @JvmField
     var movieImage=itemView.findViewById<ImageView>(R.id.movie_image_image_view)

@@ -8,22 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import by.kirich1409.viewbindingdelegate.viewBinding
 import site.madcat.movielibrary.R
 import site.madcat.movielibrary.databinding.FragmentHomeBinding
 import site.madcat.movielibrary.domain.MovieEntity
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
-
 
 class HomeFragment : Fragment() {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private lateinit var recyclerView: RecyclerView
     private val adapter=HomeAdapter()
     var swipeRefreshLayout: SwipeRefreshLayout?=null
-    private var homeFragmentPresenter=HomeFragmentPresenter()
+    private val homeFragmentPresenter=HomeFragmentPresenter()
     private var controller: Controller?=null
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -50,14 +47,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeFragmentPresenter.onAttach(this)
         swipeRefresh()
-
     }
 
     private fun swipeRefresh() {
         swipeRefreshLayout=binding.swipeRefreshLayout
         swipeRefreshLayout?.setOnRefreshListener {
-
-         controller?.refreshMovie()
+            controller?.refreshMovie()
             initView()
             swipeRefreshLayout?.isRefreshing=false
         }
@@ -79,7 +74,6 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
 
     fun updateAdapter() {
         adapter?.notifyDataSetChanged()

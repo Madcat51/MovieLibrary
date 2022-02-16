@@ -13,7 +13,6 @@ class HomeFragmentPresenter() : ViewModel(), HomeFragmentContract.HomeFragmentIn
     private var view: HomeFragment?=null
     lateinit var repository: LocalMovieRepository
 
-
     override fun onAttach(view: HomeFragment) {
         this.view=view
         repository=(view.requireActivity().application as App).repository
@@ -28,9 +27,7 @@ class HomeFragmentPresenter() : ViewModel(), HomeFragmentContract.HomeFragmentIn
         respond.postValue(title)
     }
 
-
     override fun onItemClickListener(movie: MovieEntity) {}
-
 
 }
 

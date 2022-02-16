@@ -44,9 +44,7 @@ data class MovieEntity(
 
 ) : Serializable {
 
-    fun setID(id: String): String {
-        return id
-    }
+
 }
 
 
