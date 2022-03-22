@@ -87,7 +87,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
         initViewModel(movieActivityPresenter)
     }
 
-
     override fun onResume() {
         super.onResume()
         val intentFilter=IntentFilter()
