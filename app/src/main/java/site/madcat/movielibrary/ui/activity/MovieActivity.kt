@@ -37,7 +37,6 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
     private val homeFragment=HomeFragment()
     private lateinit var baseSnackView: View
 
-
     private val myReceiver: BroadcastReceiver=object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             var networkStatus: String
