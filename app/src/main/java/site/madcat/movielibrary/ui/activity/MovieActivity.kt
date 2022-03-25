@@ -1,6 +1,8 @@
 package site.madcat.movielibrary.ui.activity
 
 
+import android.Manifest
+import android.app.Activity
 import android.content.*
 import android.content.res.Configuration
 import android.net.ConnectivityManager
@@ -11,6 +13,9 @@ import android.os.HandlerThread
 import android.os.IBinder
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +28,7 @@ import site.madcat.movielibrary.ui.detailMovieFragment.DetailMovieFragment
 import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
+
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
@@ -84,7 +90,16 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             loadFragment(HomeFragment())
         }
         initNavigation()
-        initViewModel(movieActivityPresenter)
+        checkPemission()
+    }
+
+
+    fun checkPemission(){
+  /*      val permissionRes=ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
+        if (permissionRes!= PermissionChecker.PERMISSION_GRANTED)  {
+           ActivityCompat.requestPermissions(this,
+               arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1222)
+        }*/
     }
 
     override fun onResume() {
