@@ -90,17 +90,11 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             loadFragment(HomeFragment())
         }
         initNavigation()
-        checkPemission()
+
     }
 
 
-    fun checkPemission(){
-  /*      val permissionRes=ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
-        if (permissionRes!= PermissionChecker.PERMISSION_GRANTED)  {
-           ActivityCompat.requestPermissions(this,
-               arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1222)
-        }*/
-    }
+
 
     override fun onResume() {
         super.onResume()
