@@ -21,14 +21,7 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
     private var view: MovieActivity?=null
     private lateinit var repository: LocalMovieRepository
     val getrepo: GetRetrofitMovieImpl by lazy { GetRetrofitMovieImpl() }
-
-
     override val requestResult=MutableLiveData<String>()
-
-   /* private val targetPermissions = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )*/
     private val targetPermissions = Manifest.permission.ACCESS_FINE_LOCATION
 
     override fun onAttach(view: MovieActivity) {
@@ -36,15 +29,24 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
         repository=(view.application as App).repository
         fillRepo()
         checkPemission(view)
-
     }
 
 
     fun checkPemission(activity: Activity){
         val permissionRes=ContextCompat.checkSelfPermission(activity,targetPermissions)
         if (permissionRes!= PermissionChecker.PERMISSION_GRANTED)  {
-            ActivityCompat.requestPermissions(activity, arrayOf(targetPermissions),PERMISSION_REQUEST_CODE)
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, targetPermissions)) {
+         //сюда вставить диалог
+
+            } else {
+                requestPermission(activity)
+            }
         }
+    }
+
+    fun requestPermission(activity: Activity){
+        ActivityCompat.requestPermissions(activity, arrayOf(targetPermissions),PERMISSION_REQUEST_CODE)
+
     }
 
 
