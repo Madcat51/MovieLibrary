@@ -1,9 +1,10 @@
 package site.madcat.movielibrary.ui.activity
 
 import android.Manifest
-import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.R
 import android.app.Activity
-import android.view.View
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -13,6 +14,9 @@ import site.madcat.movielibrary.App
 import site.madcat.movielibrary.data.GetRetrofitMovieImpl
 import site.madcat.movielibrary.domain.LocalMovieRepository
 import site.madcat.movielibrary.domain.MovieEntity
+
+
+
 
 private const val PERMISSION_REQUEST_CODE =5151;
 
@@ -36,8 +40,14 @@ class MovieActivityPresenter() : MovieActivityContract.MovieActivityInterface, A
         val permissionRes=ContextCompat.checkSelfPermission(activity,targetPermissions)
         if (permissionRes!= PermissionChecker.PERMISSION_GRANTED)  {
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity, targetPermissions)) {
-         //сюда вставить диалог
-
+                val builder: AlertDialog.Builder=AlertDialog.Builder(activity)
+                builder.setTitle("Требуется разрешение!")
+                    .setMessage("По условию ДЗ необходимо выдать разрешение на использование GPS!")
+                    .setCancelable(false)
+                    .setNegativeButton("Ну, ладно...",
+                        DialogInterface.OnClickListener { dialog, id ->  requestPermission(activity) })
+                val alert: AlertDialog=builder.create()
+                alert.show()
             } else {
                 requestPermission(activity)
             }
