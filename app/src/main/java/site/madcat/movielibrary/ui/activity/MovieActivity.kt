@@ -1,6 +1,7 @@
 package site.madcat.movielibrary.ui.activity
 
 
+
 import android.content.*
 import android.content.res.Configuration
 import android.net.ConnectivityManager
@@ -23,6 +24,7 @@ import site.madcat.movielibrary.ui.detailMovieFragment.DetailMovieFragment
 import site.madcat.movielibrary.ui.favoritesFragment.FavoritesFragment
 import site.madcat.movielibrary.ui.homeFragment.HomeFragment
 import site.madcat.movielibrary.ui.raitingFragment.RaitingFragment
+
 
 
 class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
@@ -84,8 +86,10 @@ class MovieActivity : AppCompatActivity(), HomeFragment.Controller {
             loadFragment(HomeFragment())
         }
         initNavigation()
-        initViewModel(movieActivityPresenter)
+
     }
+
+
 
 
     override fun onResume() {
